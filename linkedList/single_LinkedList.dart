@@ -144,6 +144,17 @@ class linkedList {
     }
   }
 
+  int sum() {
+    Node? temp = head;
+    dynamic total = 0;
+    head ?? print('empty');
+    while (temp != null) {
+      total += temp.data;
+      temp = temp.next;
+    }
+    return total;
+  }
+
   void addvalue(int data) {
     Node? newNode = Node(data);
     head ??= newNode;
@@ -220,9 +231,7 @@ class linkedList {
   }
 
   void deletebeg() {
-    print('ne');
     head = head?.next;
-    print('la');
   }
 
   void deleteEnd() {
@@ -248,8 +257,9 @@ void main() {
   list.display();
   // print('\n_______________________________________\n');
   // list.deleteNode(30);
-  print('beg');
-  list.deletebeg();
-  print('next');
+
+  // list.deletebeg();
+  print(list.sum());
   // list.deleteEnd();
+  list.display();
 }
