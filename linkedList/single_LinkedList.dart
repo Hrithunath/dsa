@@ -206,8 +206,8 @@ class linkedList {
       tail!.next = newNode;
       tail = newNode;
     }
-    newNode.next = temp;
-    temp?.next = newNode;
+    newNode.next = temp!.next;
+    temp.next = newNode;
   }
 
   void deleteNode(int data) {
@@ -242,6 +242,11 @@ class linkedList {
     tail = temp;
     temp?.next = null;
   }
+
+  // void binarysearch(int data, int target) {
+  //   Node newNode = Node(data);
+  //   whil
+  // }
 }
 
 void main() {
@@ -253,13 +258,13 @@ void main() {
   // list.addbeg(2);
   // list.addEnd(3);
   // list.insertBefore(34, 40);
-  // list.insertAfter(24, 20);
+  list.insertAfter(24, 30);
   list.display();
   // print('\n_______________________________________\n');
   // list.deleteNode(30);
 
   // list.deletebeg();
-  print(list.sum());
+  // print(list.sum());
   // list.deleteEnd();
   list.display();
 }
