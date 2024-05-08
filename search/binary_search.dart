@@ -19,23 +19,3 @@ void main() {
   find(list, 88);
 }
 
-// void main() {
-//   List<int> list = [11, 22, 33, 44, 55, 66];
-//   void find(List<int> list, int target) {
-//     int first = 0;
-//     int last = list.length - 1;
-//     while (first <= last) {
-//       int mid = ((first + last) / 2).floor();
-//       if (target == list[mid]) {
-//         print('value found at $mid');
-//         return;
-//       } else if (target < list[mid]) {
-//         last = mid - 1;
-//       } else {
-//         first = mid + 1;
-//       }
-//     }
-//     print('value not found');
-//   }
-//   find(list, 55);
-// }

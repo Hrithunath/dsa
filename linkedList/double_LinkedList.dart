@@ -16,6 +16,35 @@ class Linkedlist {
     tail = newNode;
   }
 
+  void addbeg(int data) {
+    Node newNode = Node(data);
+    newNode.next = head;
+    head?.prev = newNode;
+    head = newNode;
+  }
+
+  void addend(int data) {
+    Node newNode = Node(data);
+    tail?.next = newNode;
+    newNode.prev = tail;
+    tail = newNode;
+  }
+
+  void deletebeg() {
+    head = head?.next;
+  }
+
+  void deleteend() {
+    Node? temp = head;
+    while (temp?.next != tail) {
+      temp = temp?.next;
+      temp?.prev = temp;
+    }
+    tail = temp;
+    tail?.next = null;
+  }
+
+   
   void display() {
     Node? temp = head;
     if (temp == null) {
@@ -35,5 +64,9 @@ void main() {
   list.addvalue(30);
   list.addvalue(40);
   list.addvalue(50);
+  list.addbeg(09);
+  list.addend(51);
+  list.deletebeg();
+  list.deleteend();
   list.display();
 }
