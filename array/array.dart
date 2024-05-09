@@ -47,7 +47,18 @@
 //       max = mid - 1;
 //     } else {
 //       min = mid + 1;
-//     }   
+//     }
 //   }
 //   print('Value not Found');
 // }
+void main() {
+  List<int> numbers = [5, 9, 3, 7, 1, 8];
+  int n = 3;
+
+  // Sort the list in descending order
+  numbers.sort((a, b) => b.compareTo(a));
+
+  // Print the nth largest element
+  print("The $n-th largest element in the list is: ${numbers[n - 1]}");
+}
+

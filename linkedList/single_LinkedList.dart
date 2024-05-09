@@ -1,3 +1,5 @@
+import 'reverse_display.dart';
+
 class Node {
   int? data;
   Node? next;
@@ -48,6 +50,17 @@ class linkedList {
     tail = newnNode;
   }
 
+  // void inserAt(int data, target) {
+  //   Node? newNode = Node(data);
+  //   Node? temp = head;
+  //   while (temp != null) {
+  //     if (temp.data == target) {
+  //       break;
+  //     }
+      
+  //   }
+  // }
+
   void insertBefore(int data, int target) {
     Node? newNode = Node(data);
     Node? prev;
@@ -85,11 +98,11 @@ class linkedList {
     temp.next = newNode;
   }
 
-  void deleteNode(int data) {
-    Node? prev;
+  void DeleteNode(int data) {
     Node? temp = head;
-    if (temp != null && temp.data == data) {
-      head = temp.next;
+    Node? prev;
+    if (head?.data == data) {
+      head = head?.next;
     }
     while (temp != null) {
       if (temp.data == data) {
@@ -98,11 +111,7 @@ class linkedList {
       prev = temp;
       temp = temp.next;
     }
-    prev!.next = temp?.next;
-    if (tail == temp) {
-      prev = tail;
-      tail = null;
-    }
+    prev!.next = temp!.next;
   }
 
   void deletebeg() {
@@ -129,9 +138,8 @@ void main() {
   // list.addEnd(3);
   // list.insertBefore(34, 40);
   list.insertAfter(24, 30);
-  list.display();
-  // print('\n_______________________________________\n');
-  // list.deleteNode(30);
+
+  list.DeleteNode(30);
 
   // list.deletebeg();
   // print(list.sum());
