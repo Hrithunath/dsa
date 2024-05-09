@@ -51,14 +51,25 @@
 //   }
 //   print('Value not Found');
 // }
+// void main() {
+//   List<int> numbers = [5, 9, 3, 7, 1, 8];
+//   int n = 3;
+
+//   // Sort the list in descending order
+//   numbers.sort((a, b) => b.compareTo(a));
+
+//   // Print the nth largest element
+//   print("The $n-th largest element in the list is: ${numbers[n - 1]}");
+// }
+
 void main() {
-  List<int> numbers = [5, 9, 3, 7, 1, 8];
-  int n = 3;
-
-  // Sort the list in descending order
-  numbers.sort((a, b) => b.compareTo(a));
-
-  // Print the nth largest element
-  print("The $n-th largest element in the list is: ${numbers[n - 1]}");
+  List<int> list = [1, 2, 3, 4, 5];
+  list.add(2);
+  list.addAll([1, 2, 3, 4, 5]);
+  list.remove(2);
+  list.removeAt(4);
+  list.removeLast();
+  list.insert(4, 6);
+  list.insertAll(5, [7, 8, 9]);
+  print(list);
 }
-

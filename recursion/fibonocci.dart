@@ -1,14 +1,10 @@
-int fibonacci(int i){
-  if(i<=1){
-    return i;
+int recursion(int n) {
+  if (n <= 1) {
+    return n;
   }
-  else{
-    return fibonacci(i-1) + fibonacci(i-2);
-  }
+  return recursion(n - 1) + (n + 1);
 }
 
-void main(){
-  for(int i=0;i<5;i++){
-    print(fibonacci(i));
-  }
+void main() {
+  print(recursion(5));
 }
