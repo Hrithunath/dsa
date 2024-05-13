@@ -62,14 +62,93 @@
 //   print("The $n-th largest element in the list is: ${numbers[n - 1]}");
 // }
 
+// void main() {
+//   List<int> arr = [1, 2, 3, 4, 5];
+//   int sum = 0;
+//   for (int i = 0; i < arr.length; i++) {
+//     sum = sum + arr[i];
+//   }
+//   print(sum);
+//   if (sum % 2 == 0) {
+//     print('even');
+//   } else {
+//     print('odd');
+//   }
+// }
+// void main() {
+//   List<int> list = [1, 2, 3, 4, 5];
+//   int even = 0;
+//   int odd = 0;
+//   for (int i = 0; i < list.length; i++) {
+//     if (list[i] % 2 == 0) {
+//       even = even + list[i];
+//     } else {
+//       odd = odd + list[i];
+//     }
+//   }
+//   if (even % 2 == 0) {
+//     print("even");
+//   } else {
+//     print("odd");
+//   }
+//   if (odd % 2 == 0) {
+//     print("even");
+//   } else {
+//     print("odd");
+//   }
+// }
 void main() {
-  List<int> list = [1, 2, 3, 4, 5];
-  list.add(2);
-  list.addAll([1, 2, 3, 4, 5]);
-  list.remove(2);
-  list.removeAt(4);
-  list.removeLast();
-  list.insert(4, 6);
-  list.insertAll(5, [7, 8, 9]);
-  print(list);
+  List<int> nums = [1, 2, 3, 4,5, 6, 3, 2];
+  for (int i = 0; i < nums.length; i++) {
+    for (int j = i + 1; j < nums.length; j++) {
+      if (nums[i] == nums[j]) {
+        nums[j] = 0;
+       
+      }
+    }
+  }
+  print(nums);
 }
+
+// void main() {
+//   List<int> nums = [1, 5, 2, 2, 3, 4, 4, 1, 5];
+//   for (int i = 0; i < nums.length; i++) {
+//     int count = 0;
+//     for (int j = i + 1; j < nums.length; j++) {
+//       if (nums[i] == nums[j]) {
+//         count++;
+//       }
+//     }
+//     if (count >= 1) {
+//       print(nums[i]);
+//     }
+//   }
+// }
+
+// void main() {
+//   List<int> nums = [1, 2, 3, 4, 5, 6];
+//   int sum = 0;
+//   int a = -1;
+//   int b = -1;
+//   int target1 = 5;
+//   int target2 = 6;
+//   for (int i = 0; i < nums.length; i++) {
+//     if (nums[i] == target1) {
+//       a = i;
+//       // print(a);
+//     }
+//     if (nums[i] == target2) {
+//       b = i;
+//       // print(b);
+//     }
+//   }
+//   if (a != -1 && b != -1) {
+//     sum = a + b;
+//     print(sum);
+//     if (sum % 2 == 0) {
+//       print('even');
+//     } else {
+//       print('odd');
+//     }
+//   }
+// }

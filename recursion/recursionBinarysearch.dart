@@ -18,5 +18,5 @@ recursion(List<int> nums, target, min, max) {
 
 void main() {
   List<int> nums = [1, 2, 3, 4, 5];
-  recursion(nums, 7, 0, nums.length - 1);
+  recursion(nums, 4, 0, nums.length - 1);
 }

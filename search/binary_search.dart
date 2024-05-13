@@ -7,15 +7,17 @@ void main() {
       int mid = ((min + max) / 2).floor();
       if (Target == list[mid]) {
         print('value found at $mid');
+        mid = 0;
         return;
       } else if (Target < list[mid]) {
-        max = mid - 1;
+        max = min - 1;
       } else {
         min = mid + 1;
       }
     }
-     print('Value not found in the list');
+    print('Value not found in the list');
   }
+
+  print(list);
   find(list, 88);
 }
-

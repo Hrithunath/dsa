@@ -1,4 +1,3 @@
-
 class Node {
   int? data;
   Node? next;
@@ -56,7 +55,7 @@ class linkedList {
   //     if (temp.data == target) {
   //       break;
   //     }
-      
+
   //   }
   // }
 
@@ -125,6 +124,25 @@ class linkedList {
     tail = temp;
     temp?.next = null;
   }
+
+  void reverseLinkedList() {
+    if (head == null) {
+      print('Empty');
+    } else {
+      Node? current = head;
+      Node? prev;
+      Node? next;
+      while (current != null) {
+        next = current.next;
+        current.next = prev;
+        prev = current;
+        current = next;
+      }
+      head = prev;
+      display();
+    }
+  }
+  
 }
 
 void main() {
@@ -142,6 +160,7 @@ void main() {
 
   // list.deletebeg();
   // print(list.sum());
+  list.reverseLinkedList();
   list.deleteEnd();
   list.display();
 }
