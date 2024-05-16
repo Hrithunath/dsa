@@ -6,19 +6,17 @@
 //   arr.removeAt(3);
 //   print(arr);
 // }
-
 // void main() {
-//   List<int> arr = [1, 2,5, 3, 4,  5, 6, 7, 8, 8, 9];
-//   for (int i = 0; i < arr.length - 1; i++) {
+//   List<int> arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+//   for (int i = 0; i <= arr.length-1 ; i++) {
 //     for (int j = 0; j < i; j++) {
-//       if (arr[j]==arr[i] ) {
+//       if (arr[j] == arr[i]) {
 //         arr.remove(arr[j]);
 //       }
 //     }
 //   }
 //   print(arr);
 // }
-
 // Linear Search
 // void main() {
 //   int i;
@@ -97,18 +95,18 @@
 //     print("odd");
 //   }
 // }
-void main() {
-  List<int> nums = [1, 2, 3, 4,5, 6, 3, 2];
-  for (int i = 0; i < nums.length; i++) {
-    for (int j = i + 1; j < nums.length; j++) {
-      if (nums[i] == nums[j]) {
-        nums[j] = 0;
-       
-      }
-    }
-  }
-  print(nums);
-}
+// void main() {
+//   List<int> nums = [1, 2, 3, 4,5, 6, 3, 2];
+//   for (int i = 0; i < nums.length; i++) {
+//     for (int j = i + 1; j < nums.length; j++) {
+//       if (nums[i] == nums[j]) {
+//         nums[j] = 0;
+
+//       }
+//     }
+//   }
+//   print(nums);
+// }
 
 // void main() {
 //   List<int> nums = [1, 5, 2, 2, 3, 4, 4, 1, 5];
@@ -152,3 +150,35 @@ void main() {
 //     }
 //   }
 // }
+
+// void main() {
+//   List<int> num = [1, 2, 3, 4, 5, 6, 7];
+//   Set numbers = num.toSet();
+//   List unique = numbers.toList();
+//   print(unique);
+// }
+
+// void main() {
+//   int n = 4;
+//   List words = ['hai', 'hellomm', 'goodsd', 'badrres'];
+//   for (int i = 0; i <= n; i++) {
+//     if (i == n - 1) {
+//       print(words[i].length);
+//     }
+//   }
+// }
+
+// void main() {
+//   List<int> arr = [1, 2, 3, 4, 5, 6, 7, 8];
+//   int start = 0;
+//   int end = arr.length - 1;
+//   while (start < end) {
+//     int temp = arr[start];
+//     arr[start] = arr[end];
+//     arr[end] = temp;
+//     start++;
+//     end--;
+//   }
+//   print(arr);
+// }
+

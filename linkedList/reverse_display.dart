@@ -1,4 +1,3 @@
-
 class node {
   String? str;
   node? next;
@@ -11,32 +10,25 @@ class Linkedlist {
   node? tail;
 
   addvalue(String str) {
-    node? newNode = node(str);
-    if (head == null) {
-      head = newNode;
-    } else {
-      tail?.next = newNode;
-      newNode.prev = tail;
+    Linkedlist list = Linkedlist();
+    for (int i = 0; i <= str.length; i++) {
+      list.addvalue(str[i]);
     }
-    tail = newNode;
+    list.display();
   }
 
-  reverseDisplay() {
-    node? temp = tail;
-    List res = [];
+  void display() {
+    node? temp = head;
     while (temp != null) {
-      res.add(temp.str);
-      temp = temp.prev;
+      print(temp.str);
+      temp = temp.next;
     }
-    return res.join();
   }
 }
 
 void main() {
   Linkedlist list = Linkedlist();
   var words = 'hello';
-  for (int i = 0; i <= words.length; i++) {
-    list.addvalue(words[i]);
-  }
-  print(list.reverseDisplay());
+  print(words);
+  list.display();
 }

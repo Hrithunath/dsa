@@ -1,11 +1,12 @@
-String recursion(String str) {
+reverseString(String str) {
   if (str.length <= 1) {
     return str;
   }
-  return recursion(str.substring(1)) + str[0];
+  return reverseString(str.substring(1)) + str[0];
 }
 
 void main() {
-print(recursion('flutter'));
-
+  String word = 'hai';
+  String reverse = reverseString(word);
+  print(reverse);
 }

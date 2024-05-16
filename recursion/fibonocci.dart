@@ -1,10 +1,10 @@
-int recursion(int n) {
+fibinocci(int n) {
   if (n <= 1) {
-    return n;
+    return 1;
   }
-  return recursion(n - 1) + (n + 1);
+  return n+ fibinocci((n - 1 + (n - 2)));
 }
 
 void main() {
-  print(recursion(5));
+  print(fibinocci(5));
 }
