@@ -48,16 +48,7 @@ class linkedList {
     tail = newnNode;
   }
 
-  // void inserAt(int data, target) {
-  //   Node? newNode = Node(data);
-  //   Node? temp = head;
-  //   while (temp != null) {
-  //     if (temp.data == target) {
-  //       break;
-  //     }
-
-  //   }
-  // }
+  
 
   void insertBefore(int data, int target) {
     Node? newNode = Node(data);

@@ -31,7 +31,6 @@ class Linkedlist {
       temp = temp.next;
     }
     newNode.next = temp?.next;
-   
     newNode.prev = temp;
      temp?.next = newNode;
     temp?.next?.prev = newNode;
@@ -48,7 +47,8 @@ class Linkedlist {
         break;
       }
       temp = temp.next;
-    }
+    } 
+   
     newNode.next = temp;
     newNode.prev = temp?.prev;
     temp?.prev?.next = newNode;
