@@ -10,7 +10,7 @@ void main() {
         mid = 0;
         return;
       } else if (Target < list[mid]) {
-        max = min - 1;
+        max = mid - 1;
       } else {
         min = mid + 1;
       }
