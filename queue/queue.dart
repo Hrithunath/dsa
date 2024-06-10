@@ -8,25 +8,18 @@ class Queue {
   Node? front;
   Node? rear;
 
-  void enqueue(int data) {
-    Node? newNode = Node(data);
+  void Enqueue(int data) {
+    Node newNode = Node(data);
     if (front == null) {
       front = newNode;
     } else {
-      rear?.next = newNode;
+      rear!.next = newNode;
     }
     rear = newNode;
   }
 
-  void dequeue() {
-    front = front?.next;
-  }
-
   void display() {
     Node? temp = front;
-    if (front == null) {
-      print('Empty');
-    }
     while (temp != null) {
       print(temp.data);
       temp = temp.next;
@@ -36,10 +29,9 @@ class Queue {
 
 void main() {
   Queue q = Queue();
-  q.enqueue(10);
-  q.enqueue(20);
-  q.enqueue(30);
-  q.enqueue(40);
-  q.dequeue();
+  q.Enqueue(14);
+  q.Enqueue(56);
+  q.Enqueue(38);
+  q.Enqueue(28);
   q.display();
 }

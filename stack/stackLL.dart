@@ -1,51 +1,100 @@
-import 'stackList.dart';
+import '../recursion/reverseString.dart';
 
 class Node {
-  int? data;
+  
+  int value;
   Node? next;
-  Node(this.data);
+  Node(this.value);
 }
 
 class Stack {
   Node? top;
 
-  void push(int data) {
-    Node newNode = Node(data);
+  void push(dynamic value) {
+    Node? newNode = Node(value);
     if (top == null) {
       top = newNode;
     } else {
       newNode.next = top;
-      top = newNode;
     }
+    top = newNode;
   }
 
-  void pop() {
+  pop() {
     top = top?.next;
   }
 
-  void peek() {
-    print(top?.data);
+  search(int target) {
+    Node? temp = top;
+    while (temp != null) {
+      if (temp.value == target) {
+        print('Value Found');
+        return;
+      }
+      temp = temp.next;
+    }
+    print('Not Found');
   }
 
-  void dispaly() {
+  sum() {
+    dynamic sum = 0;
     Node? temp = top;
-    if (top == null) {
-      print('Empty');
-    }
     while (temp != null) {
-      print(temp.data);
+      sum += temp.value;
+      temp = temp.next;
+    }
+    print(sum);
+  }
+
+  countOdd() {
+    Node? temp = top;
+    int count = 0;
+    while (temp != null) {
+      if (temp.value % 2 != 0) {
+        count++;
+      }
+      temp = temp.next;
+    }
+    print(count);
+  }
+
+  reverseString(String word) {
+    Stack s = Stack();
+    for (var i = 0; i < word.length; i++) {
+      s.push(word[i]);
+    }
+    String reverseString = '';
+    while (s.top != null) {
+      reverseString += s.pop();
+    }
+    return reverseString;
+  }
+
+  void display() {
+    Node? temp = top;
+    while (temp != null) {
+      print(temp.value);
       temp = temp.next;
     }
   }
 }
 
 void main() {
-  stack s = stack();
-  s.push(10);
-  s.push(20);
-  s.push(30);
-  s.push(40);
+  Stack s = Stack();
+
+  s.push(11);
+  s.push(12);
+  s.push(24);
+  s.push(44);
+  s.push(24);
+  s.push(27);
+  s.push(94);
   s.pop();
-  s.peek();
+  s.countOdd();
+  s.sum();
+  s.search(12);
+  String str = "hello";
+  String reverse = reverseString(str);
+  print(reverse);
   s.display();
 }
