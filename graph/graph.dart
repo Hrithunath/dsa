@@ -78,38 +78,38 @@
 //   // gph.dfs(10);
 //   // print(gph.adjacentList);
 // }
+import 'dart:collection';
 
 class Graph {
-  Map<int, List<int>> adjacentList = {};
-
-  void addVertex(int vertex) {
-    if (!adjacentList.containsKey(vertex)) {
-      adjacentList[vertex] = [];
+  Map<int, List<int>> adjcentList = {};
+  AddVertex(int vertex) {
+    if (!adjcentList.containsKey(vertex)) {
+      adjcentList[vertex] = [];
     }
   }
 
-  void addEdges(int vertex1, int vertex2) {
-    if (adjacentList.containsKey(vertex1) &&
-        adjacentList.containsKey(vertex2)) {
-      adjacentList[vertex1]?.add(vertex2);
+  AddEdges(int vertex1, int vertex2) {
+    if (adjcentList.containsKey(vertex1) && adjcentList.containsKey(vertex2)) {
+      adjcentList[vertex1]?.add(vertex2);
+      adjcentList[vertex2]?.add(vertex1);
     }
   }
 
-  void removeEdges(int vertex1, int vertex2) {
-    adjacentList[vertex1]?.remove(vertex2);
-    adjacentList[vertex2]?.remove(vertex1);
-  }
-
-  void removeVertex(int vertex) {
-    if (adjacentList.containsKey(vertex)) {
-      adjacentList[vertex]?.forEach((neibour) {
-        adjacentList[neibour]?.remove(vertex);
+  removeVertex(int vertex) {
+    if (adjcentList.containsKey(vertex)) {
+      adjcentList[vertex]?.forEach((neibour) {
+        adjcentList[neibour]?.remove(vertex);
       });
-      adjacentList.remove(vertex);
+      adjcentList.remove(vertex);
     }
   }
 
-  void dst(int start) {
+  removeEdges(int vertex1, int vertex2) {
+    adjcentList[vertex1]?.remove(vertex2);
+    adjcentList[vertex2]?.remove(vertex1);
+  }
+
+  DFS(int start) {
     Set<int> visited = {};
     List<int> stack = [];
     stack.add(start);
@@ -118,8 +118,22 @@ class Graph {
       if (!visited.contains(vertex)) {
         print(vertex);
         visited.add(vertex);
-        stack.addAll(adjacentList[vertex]!
-            .where((neibour) => visited.contains(neibour)));
+        stack.addAll(adjcentList[vertex]!.where((neibour)=>!visited.contains(neibour)));
+      }
+    }
+  }
+
+  BFS(int start) {
+    Set<int> visited = {};
+    Queue<int> queue = Queue<int>();
+    queue.add(start);
+    while (queue.isNotEmpty) {
+      int vertex = queue.removeFirst();
+      if (!visited.contains(vertex)) {
+        print(vertex);
+        visited.add(vertex);
+        queue.addAll(adjcentList[vertex]!
+            .where((neibour) => !visited.contains(neibour)));
       }
     }
   }
@@ -127,17 +141,18 @@ class Graph {
 
 void main() {
   Graph graph = Graph();
-
-  graph.addVertex(10);
-  graph.addVertex(20);
-  graph.addVertex(30);
-  graph.addVertex(40);
-  graph.addVertex(50);
-  graph.addEdges(10, 30);
-  graph.addEdges(10, 20);
-  graph.addEdges(30, 40);
-  graph.addEdges(30, 20);
-  graph.removeEdges(30, 20);
+  graph.AddVertex(10);
+  graph.AddVertex(20);
+  graph.AddVertex(30);
+  graph.AddVertex(40);
+  graph.AddVertex(50);
+  graph.AddVertex(60);
+  graph.AddEdges(40, 30);
+  graph.AddEdges(40, 10);
+  graph.AddEdges(40, 60);
+  graph.removeEdges(40, 10);
   graph.removeVertex(50);
-  print(graph.adjacentList);
+  graph.DFS(40);
+  graph.BFS(40);
+  print(graph.adjcentList);
 }

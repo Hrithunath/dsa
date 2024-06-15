@@ -2,14 +2,13 @@
 //   int? data;
 //   Node? left;
 //   Node? right;
-//   Node(this.data);
+//   Node(this.data, {this.left, this.right});
 // }
 
-// class Bst {
+// class Tree {
 //   Node? root;
 //   void insert(int data) {
 //     Node? newNode = Node(data);
-
 //     if (root == null) {
 //       root = newNode;
 //       return;
@@ -48,26 +47,99 @@
 //     preOrder(node.right);
 //   }
 
-//   void postOrder(Node? node) {
-//     if (node == null) return;
-//     postOrder(node.left);
-//     postOrder(node.right);
-//     print(node.data);
+//   bool contains(dynamic data) {
+//     Node? temp = root;
+//     while (temp != null) {
+//       if (data < temp.data) {
+//         temp = temp.left;
+//       } else if (data > temp.data) {
+//         temp = temp.right;
+//       } else {
+//         return false;
+//       }
+//     }
+//     return true;
 //   }
+
+//   bool isValidBST(Node? root) {
+//     return isBST(root, double.negativeInfinity, double.maxFinite);
+//   }
+
+//   bool isBST(Node? node, double minValue, double MaxValue) {
+//     if (node == null) {
+//       return true;
+//     }
+//     if (node.data! <= minValue || node.data! >= MaxValue) {
+//       return false;
+//     }
+//     return isBST(node.left, minValue, node.data!.toDouble()) &&
+//         isBST(node.right, node.data!.toDouble(), MaxValue);
+//   }
+
+//   void remove(int data) {
+//     root = _remove(root, data);
+//   }
+
+//   Node? _remove(Node? node, int data) {
+//     if (node == null) {
+//       return null;
+//     }
+//     if (data < node.data!) {
+//       node.left = _remove(node.left, data);
+//     } else if (data > node.data!) {
+//       node.right = _remove(node.right, data);
+//     } else {
+//       if (node.left == null) {
+//         return node.right;
+//       } else if (node.right == null) {
+//         return node.left;
+//       }
+//       node.data = _minvalue(node.right);
+//       node.right = _remove(node.right, node.data!);
+//     }
+//     return node;
+//   }
+
+//   int? _minvalue(Node? node) {
+//     int minvalue = node!.data!;
+//     while (node!.left != null) {
+//       node = node.left;
+//       minvalue = node!.data!;
+//     }
+//     return minvalue;
+//   }
+
+// int height() {
+//   return calculateHeight(root);
+// }
+
+// calculateHeight(Node? node) {
+//   if (node == null) {
+//     return 0;
+//   }
+//   int left = calculateHeight(node.left);
+//   int right = calculateHeight(node.right);
+//   return 1 + (left < right ? right : left);
+// }
 // }
 
 // void main() {
-//   Bst bs = Bst();
-//   bs.insert(10);
-//   bs.insert(40);
-//   bs.insert(50);
-//   bs.insert(20);
-//   bs.insert(70);
-//   bs.inOrder(bs.root);
-//   bs.preOrder(bs.root);
-//   bs.postOrder(bs.root);
+//   Tree tree = Tree();
+//   tree.insert(4);
+//   tree.insert(5);
+//   tree.insert(6);
+//   tree.insert(1);
+//   tree.insert(3);
+//   tree.insert(2);
+//   // tree.inOrder(tree.root);
+//   // tree.preOrder(tree.root);
+//   print(tree.contains(3));
+//   Node root = Node(2, left: Node(1), right: Node(3));
+//   print(tree.isValidBST(root));
+//   tree.remove(1);
+//   tree.inOrder(tree.root);
+//  print(bst.height());
 // }
-
 class Node {
   int? data;
   Node? left;
@@ -75,7 +147,7 @@ class Node {
   Node(this.data);
 }
 
-class Tree {
+class BST {
   Node? root;
   void insert(int data) {
     Node? newNode = Node(data);
@@ -103,29 +175,49 @@ class Tree {
     }
   }
 
-  void inOrder(Node? node) {
+  void inorder(Node? node) {
     if (node == null) return;
-    inOrder(node.left);
+    inorder(node.left);
     print(node.data);
-    inOrder(node.right);
+    inorder(node.right);
   }
 
-  void preOrder(Node? node) {
-    if (node == null) return;
-    print(node.data);
-    preOrder(node.left);
-    preOrder(node.right);
+  bool contains(int data) {
+    Node? temp = root;
+    while (temp != null) {
+      if (data < temp.data!) {
+        temp = temp.left;
+      } else if (data > temp.data!) {
+        temp = temp.right;
+      } else {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  height() {
+    return ContainsHeight(root);
+  }
+
+  ContainsHeight(Node? node) {
+    if (node == null) {
+      return 0;
+    }
+    int left = ContainsHeight(node.left);
+    int right = ContainsHeight(node.right);
+    return 1 + (left < right ? left : right);
   }
 }
 
 void main() {
-  Tree tree = Tree();
-  tree.insert(4);
-  tree.insert(5);
-  tree.insert(6);
-  tree.insert(1);
-  tree.insert(3);
-  tree.insert(2);
-  // tree.inOrder(tree.root);
-  tree.preOrder(tree.root);
+  BST bst = BST();
+  bst.insert(2);
+  bst.insert(4);
+  bst.insert(1);
+  bst.insert(5);
+  bst.insert(3);
+  bst.inorder(bst.root);
+  bst.contains(3);
+  print(bst.height());
 }

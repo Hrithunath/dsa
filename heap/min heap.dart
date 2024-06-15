@@ -1,74 +1,134 @@
+// class MinHeap {
+//   List<int> heap = [];
+//   insert(int data) {
+//     heap.add(data);
+//     heapifyUp(heap.length - 1);
+//   }
+
+//   heapifyUp(int index) {
+//     while (index > 0) {
+//       int parentIndex = (index - 1) ~/ 2;
+//       if (heap[parentIndex] > heap[index]) {
+//         swap(parentIndex, index);
+//         index = parentIndex;
+//       } else {
+//         break;
+//       }
+//     }
+//   }
+
+//   heapifyDown(int index) {
+//     int length = heap.length;
+//     while (true) {
+//       int leftchild = 2 * index + 1;
+//       int rightchild = 2 * index + 2;
+//       int smallest = index;
+//       if (leftchild < length && heap[leftchild] < heap[smallest]) {
+//         smallest = leftchild;
+//       }
+//       if (rightchild < length && heap[rightchild] < heap[smallest]) {
+//         smallest = rightchild;
+//       }
+//       if (smallest != index) {
+//         swap(index, smallest);
+//         index = smallest;
+//       } else {
+//         break;
+//       }
+//     }
+//   }
+
+//   swap(int index1, int index2) {
+//     int temp = heap[index1];
+//     heap[index1] = heap[index2];
+//     heap[index2] = temp;
+//   }
+
+//   int? extractmin() {
+//     if (heap.isEmpty) return null;
+//     int min = heap.first;
+//     heap[0] = heap.removeLast();
+//     heapifyDown(0);
+//     return min;
+//   }
+// }
+
+// void main() {
+//   MinHeap MH = MinHeap();
+//   MH.insert(7);
+//   MH.insert(4);
+//   MH.insert(8);
+//   MH.insert(6);
+//   MH.insert(3);
+//   print(MH.heap);
+//   print(MH.extractmin());
+//   print(MH.heap);
+// }
 class MinHeap {
   List<int> heap = [];
 
-  void insert(int value) {
-    heap.add(value);
-    _heapifyUp(heap.length - 1);
+  insert(int data) {
+    heap.add(data);
+    heapifyup(heap.length - 1);
   }
 
- 
-
-  void _heapifyUp(int index) {
-    int parentIndex = (index - 1) ~/ 2;
-    if (index > 0 && heap[index] < heap[parentIndex]) {
-      _swap(index, parentIndex);
-      _heapifyUp(parentIndex);
-    }
-  }
-
-  void _heapifyDown(int index) {
-    int leftChild = 2 * index + 1;
-    int rightChild = 2 * index + 2;
-    int smallest = index;
-
-    if (leftChild < heap.length && heap[leftChild] < heap[smallest]) {
-      smallest = leftChild;
-    }
-
-    if (rightChild < heap.length && heap[rightChild] < heap[smallest]) {
-      smallest = rightChild;
-    }
-
-    if (smallest != index) {
-      _swap(index, smallest);
-      _heapifyDown(smallest);
+  heapifyup(int index) {
+    while (index > 0) {
+      int parentIndex = (index - 1) ~/ 2;
+      if (heap[parentIndex] > heap[index]) {
+        swap(index, parentIndex);
+        index = parentIndex;
+      } else {
+        break;
+      }
     }
   }
 
-  void _swap(int index1, int index2) {
+  heapifyDown(int index) {
+    int length = heap.length;
+    while (true) {
+      int LeftChild = 2 * index + 1;
+      int RightChild = 2 * index + 2;
+      int smallest = index;
+      if (LeftChild < length && heap[LeftChild] < heap[smallest]) {
+        smallest = LeftChild;
+      }
+      if (RightChild < length && heap[RightChild] < heap[smallest]) {
+        smallest = RightChild;
+      }
+      if (smallest != index) {
+        swap(smallest, index);
+        index = smallest;
+      } else {
+        break;
+      }
+    }
+  }
+
+  swap(int index1, int index2) {
     int temp = heap[index1];
     heap[index1] = heap[index2];
     heap[index2] = temp;
   }
 
-  bool isEmpty() {
-    return heap.isEmpty;
-  }
-
-   int? extractMin() {
+  removeMin() {
     if (heap.isEmpty) return null;
     int min = heap.first;
     heap[0] = heap.removeLast();
-    _heapifyDown(0);
+    heapifyDown(0);
     return min;
-  }
-
-  int? peek() {
-    if (heap.isEmpty) return null;
-    return heap.first;
   }
 }
 
 void main() {
   MinHeap heap = MinHeap();
   heap.insert(10);
-  heap.insert(5);
   heap.insert(20);
-  heap.insert(1);
+  heap.insert(30);
+  heap.insert(40);
+  heap.insert(50);
 
-  print(heap.extractMin()); // 1
-  print(heap.extractMin()); // 5
-  print(heap.extractMin()); // 10
-  print(heap.extractMin()); // 20
-  print(heap.extractMin()); // null (empty heap)
+  print(heap.heap);
+  print(heap.removeMin());
+  print(heap.heap);
 }
