@@ -2,14 +2,15 @@ class Node {
   int? data;
   Node? left;
   Node? right;
+
   Node(this.data);
 }
 
 class BST {
   Node? root;
-  void insert(int data) {
-    Node? newNode = Node(data);
 
+  insert(int data) {
+    Node? newNode = Node(data);
     if (root == null) {
       root = newNode;
       return;
@@ -34,29 +35,37 @@ class BST {
     }
   }
 
-  void inorder(Node? node) {
+  inorder(Node? node) {
     if (node == null) return;
     inorder(node.left);
     print(node.data);
     inorder(node.right);
   }
 
-  void preOrder(Node? node) {
-    if (node == null) return;
-    print(node.data);
-    preOrder(node.left);
-    preOrder(node.right);
+  height() {
+    return calculateHeight(root);
   }
 
-  void postorder(Node) {}
+  calculateHeight(Node? node) {
+    if (node == null) {
+      return 0;
+    }
+    int left = calculateHeight(node.left);
+    int right = calculateHeight(node.right);
+    return 1 + (left < right ? right : left);
+  }
+
+  
 }
 
 void main() {
   BST bst = BST();
+  bst.insert(30);
+  bst.insert(40);
+  bst.insert(20);
   bst.insert(10);
-  bst.insert(90);
   bst.insert(60);
-  bst.insert(4);
+  bst.insert(50);
   bst.inorder(bst.root);
-  bst.preOrder(bst.root);
+  print(bst.height());
 }

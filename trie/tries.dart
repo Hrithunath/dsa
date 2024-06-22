@@ -66,7 +66,7 @@
 //   print(tries.Lcp());
 // }
 
-import 'dart:ffi';
+
 
 class Node {
   Map<String, Node> children = {};

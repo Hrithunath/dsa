@@ -41,6 +41,8 @@ class MinHeap {
     }
   }
 
+  
+
   exactMin() {
     if (heap.isEmpty) return null;
     Node min = heap.first;
@@ -74,5 +76,5 @@ void main() {
   queue.Enqueue('hai', 4);
   queue.Enqueue('hoi', 2);
   queue.Enqueue('hi', 1);
-  print(queue.Dequeue());
+  print(queue.Dequeue().data);
 }

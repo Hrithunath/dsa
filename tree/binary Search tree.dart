@@ -61,20 +61,20 @@
 //     return true;
 //   }
 
-//   bool isValidBST(Node? root) {
-//     return isBST(root, double.negativeInfinity, double.maxFinite);
-//   }
+// bool isValidBST(Node? root) {
+//   return isBST(root, double.negativeInfinity, double.maxFinite);
+// }
 
-//   bool isBST(Node? node, double minValue, double MaxValue) {
-//     if (node == null) {
-//       return true;
-//     }
-//     if (node.data! <= minValue || node.data! >= MaxValue) {
-//       return false;
-//     }
-//     return isBST(node.left, minValue, node.data!.toDouble()) &&
-//         isBST(node.right, node.data!.toDouble(), MaxValue);
+// bool isBST(Node? node, double minValue, double MaxValue) {
+//   if (node == null) {
+//     return true;
 //   }
+//   if (node.data! <= minValue || node.data! >= MaxValue) {
+//     return false;
+//   }
+//   return isBST(node.left, minValue, node.data!.toDouble()) &&
+//       isBST(node.right, node.data!.toDouble(), MaxValue);
+// }
 
 //   void remove(int data) {
 //     root = _remove(root, data);
@@ -100,14 +100,14 @@
 //     return node;
 //   }
 
-//   int? _minvalue(Node? node) {
-//     int minvalue = node!.data!;
-//     while (node!.left != null) {
-//       node = node.left;
-//       minvalue = node!.data!;
-//     }
-//     return minvalue;
+// int? _minvalue(Node? node) {
+//   int minvalue = node!.data!;
+//   while (node!.left != null) {
+//     node = node.left;
+//     minvalue = node!.data!;
 //   }
+//   return minvalue;
+// }
 
 // int height() {
 //   return calculateHeight(root);
@@ -122,6 +122,8 @@
 //   return 1 + (left < right ? right : left);
 // }
 // }
+
+// ignore_for_file: unused_element
 
 // void main() {
 //   Tree tree = Tree();
@@ -182,6 +184,36 @@ class BST {
     inorder(node.right);
   }
 
+  // bool isValidBST(Node? root) {
+//   return isBST(root, double.negativeInfinity, double.maxFinite);
+// }
+
+// bool isBST(Node? node, double minValue, double MaxValue) {
+//   if (node == null) {
+//     return true;
+//   }
+//   if (node.data! <= minValue || node.data! >= MaxValue) {
+//     return false;
+//   }
+//   return isBST(node.left, minValue, node.data!.toDouble()) &&
+//       isBST(node.right, node.data!.toDouble(), MaxValue);
+// }
+
+  isValidBST(Node? root) {
+    return isBSt(root, double.negativeInfinity, double.infinity);
+  }
+
+  isBSt(Node? node, double minvalue, double maxvalue) {
+    if (node == null) {
+      return true;
+    }
+    if (node.data! <= minvalue || node.data! >= maxvalue) {
+      return false;
+    }
+    return isBSt(node.left, minvalue, node.data!.toDouble()) &&
+        isBSt(node.right, node.data!.toDouble(), maxvalue);
+  }
+
   bool contains(int data) {
     Node? temp = root;
     while (temp != null) {
@@ -190,10 +222,10 @@ class BST {
       } else if (data > temp.data!) {
         temp = temp.right;
       } else {
-        return false;
+        return true;
       }
     }
-    return true;
+    return false;
   }
 
   height() {
@@ -218,6 +250,7 @@ void main() {
   bst.insert(5);
   bst.insert(3);
   bst.inorder(bst.root);
-  bst.contains(3);
+  print(bst.contains(3));
+  print(bst.isValidBST(bst.root));
   print(bst.height());
 }
